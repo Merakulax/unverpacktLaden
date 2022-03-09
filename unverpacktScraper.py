@@ -66,7 +66,7 @@ def pScraper(artikel):
                 case ['Website:www.füllgut-regensburg.de' | 'Website:www.unverpackt-fulda.de/' as ws]:
                     we = ws.split(":")[1]
                     webseite = we
-                case ["Online-Shop", linkO]:
+                case ["Online-Shop:", linkO]:
                     onlineShop = linkO
 
                 case [
@@ -135,7 +135,8 @@ def main():
     for a,b,c,d,e,f,g,h,i in zip(bundesland, nameLaden,ladenBesitzer,ort,dasBesondere,webseite,onlineShop,faceBook,instagram):
         try:
             csv_writer.writerow([a,b,c,d,e,f,g,h,i])
-        except UnicodeEncodeError:
+        except UnicodeEncodeError as b:
+            print(b)
             print(a,b,c,d,e,f,g,h,i)
 
     # Schließen der File
@@ -143,4 +144,7 @@ def main():
 
 
 if __name__ == '__main__':
+    a = ['abcde']
+    print(a)
+    print(a[0])
     main()
