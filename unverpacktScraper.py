@@ -170,7 +170,7 @@ def pScraper(artikel):
                     onlineShop = linkO
 
                 case [
-                    "Saarland" | "Niedersachsen" | "Baden-Württemberg" | "Bayern" | "Berlin" | "Brandenburg" | "Bremen" | "Hamburg" | "Hessen" | "Mecklenburg-Vorpommern" | "Nordrhein-Westfalen" | "Rheinland-Pfalz" | "Sachsen" | "Sachsen-Anhalt" | "Schleswig-Holstein" | "Thüringen" as bl]:
+                    "Online"|"Saarland" | "Niedersachsen" | "Baden-Württemberg" | "Bayern" | "Berlin" | "Brandenburg" | "Bremen" | "Hamburg" | "Hessen" | "Mecklenburg-Vorpommern" | "Nordrhein-Westfalen" | "Rheinland-Pfalz" | "Sachsen" | "Sachsen-Anhalt" | "Schleswig-Holstein" | "Thüringen" as bl]:
                     # print(bl)
                     bundesland = bl
                 case ["Facebook:", fb]:
@@ -223,9 +223,10 @@ def main():
     # Erstellen der Suppe
     soup = BeautifulSoup(source, 'lxml')
 
-    # print(soup.prettify())
+    #print(soup.prettify())
 
     artikel = soup.find('div', id="article__content-body")
+    #print(artikel.prettify())
     csv_file = open('unverpacktLadenDiv_scrape.csv', 'w')
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(["Bundesland","Ladenname","Name Besitzer","Ort","Besonderes","Webseite","OnlineShop","FaceBook","Instagram"])
